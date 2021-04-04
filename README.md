@@ -1,3 +1,1 @@
-i just learning am 
-
-in progress
+### Just for fun. Send one SMS per thread
