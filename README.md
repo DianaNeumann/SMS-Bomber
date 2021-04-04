@@ -1,3 +1,3 @@
-i just am learning
+i just learning am 
 
-in progress
+progress learning
