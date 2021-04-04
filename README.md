@@ -1,2 +1,3 @@
-# SMS-Bomber
-sending......
+i just am learning
+
+in progress
