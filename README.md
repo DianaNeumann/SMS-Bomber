@@ -1,1 +1,1 @@
-### Just for fun. Send one SMS per thread
+### Just for fun. Sends one SMS per thread
